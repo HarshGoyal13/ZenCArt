@@ -1,0 +1,62 @@
+{
+  "name": "e-com",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.19.2",
+    "axios": "^1.7.2",
+    "braintree": "^3.23.0",
+    "braintree-web-drop-in-react": "^1.2.1",
+    "concurrently": "^8.2.2",
+    "jwt-decode": "^4.0.0",
+    "moment": "^2.30.1",
+    "mongoose": "^8.5.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet": "^6.1.0",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.2.1",
+    "react-router-dom": "^6.25.0",
+    "react-scripts": "5.0.1",
+    "react-slick": "^0.30.2",
+    "react-spinners": "^0.14.1",
+    "react-toastify": "^10.0.5",
+    "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.7.5",
+    "typeface-montserrat": "^1.1.13",
+    "typeface-roboto": "^1.1.13",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "cd server && npm run dev",
+    "dev": "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm start\" \"npm run server\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.6"
+  }
+}

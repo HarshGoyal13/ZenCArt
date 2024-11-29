@@ -22,6 +22,18 @@ const Header = () => {
   const location = useLocation();
   const [values, setValues] = useSearch();
   const [categories, setCategories] = useState([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown2 = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+  };
+
+  
+
 
   const role = auth?.user?.role
 
@@ -113,22 +125,39 @@ const Header = () => {
             <Link to="/" className={getLinkClasses("/")}>
               Home
             </Link>
-            <div className="relative group">
-              <button to="/categories" className={getLinkClasses("/categories")}>
-                Categories
-              </button>
-              <div className="absolute left-0 top-full mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50 max-h-56 overflow-y-auto">
-                {categories.map((category) => (
-                  <Link
-                    key={category._id}
-                    to={`/categories/${category.slug}`}
-                    className="block py-2 px-4 text-base lg:text-lg text-taupegray hover:text-darkred hover:bg-gray-100"
-                  >
-                    {category.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
+
+
+
+    <div className="relative">
+      <button
+        onClick={toggleDropdown2}
+        className={getLinkClasses("/categories")}
+      >
+        Categories
+      </button>
+      {isDropdownOpen && (
+        <div
+          className="absolute left-0 top-full mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-56 overflow-y-auto"
+          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the dropdown
+        >
+          {categories.map((category) => (
+            <Link
+              key={category._id}
+              to={`/categories/${category.slug}`}
+              className="block py-2 px-4 text-base lg:text-lg text-taupegray hover:text-darkred hover:bg-gray-100"
+              onClick={closeDropdown} // Close dropdown when a category is clicked
+            >
+              {category.name}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+
+
+
+
+
             <Link to="/contactus" className={getLinkClasses("/contactus")}>
               Contact Us
             </Link>

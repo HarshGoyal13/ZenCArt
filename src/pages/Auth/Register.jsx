@@ -32,11 +32,17 @@ const Register = () => {
       const res = await axios.post(`${baseurl}/auth/register`, formData);
 
       if (res && res.data.success) {
-        toast.success(res.data.message);
-        toast.success("Registration successful. Please check your email to confirm your account.");
-        navigate("/login"); // Redirect to login or another page
+        toast.success("Registration successful. Please check your email to confirm your account.", {
+          autoClose: 3000, // Display for 5 seconds
+        });
+      
+        setTimeout(() => {
+          navigate("/login"); // Redirect after toast is shown
+        }, 3000);
       } else {
-        toast.error(res.data.message);
+        toast.error(res.data.message, {
+          autoClose: 5000, // Display for 5 seconds
+        });
       }
 
       setFormData({

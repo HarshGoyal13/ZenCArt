@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { Helmet } from 'react-helmet';
 import { Toaster } from "react-hot-toast";
+
 const Layout = ({ children, title = 'ZenCArt - shop now', description = 'mern stack project', keywords = 'mern,react,node,mongodb', author = 'harsh' }) => {
   return (
     <>

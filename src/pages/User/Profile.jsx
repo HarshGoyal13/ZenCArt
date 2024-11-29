@@ -5,10 +5,12 @@ import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
 import axios from "axios";
 
+
 const Profile = () => {
   // Context
   const [auth, setAuth] = useAuth();
   const token = auth?.token;
+  const baseurl = process.env.REACT_APP_BASE_URL;
 
   // State
   const [name, setName] = useState("");
@@ -32,7 +34,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put("http://localhost:8080/api/v1/auth/profile", {
+      const { data } = await axios.put(`${baseurl}/auth/profile`, {
         name,
         email,
         password,
